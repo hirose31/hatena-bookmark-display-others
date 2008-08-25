@@ -452,7 +452,7 @@ JSONP.append(JSONP.YahooPipes.page({
 
 // delicious
 JSONP.append(JSONP.YahooPipes.feed({
-	url: "http://del.icio.us/rss/url?url="+url
+	url: "http://feeds.delicious.com/rss/url?url="+url
 	,_callback: JSONP.registerCallback(
 		"del"
 		,function(feed){
@@ -468,7 +468,7 @@ JSONP.append(JSONP.YahooPipes.feed({
 					post.user_image=post.image="http://del.icio.us/favicon.ico";
 					post.tags=(function(tags){
 						for(var i=0,result=[],len=tags.length; i<len; i++){
-							var tag=tags[i].resource;
+							var tag=tags[i]["rdf:resource"];
 							result.push(Builder.tag(
 								tag.match(/[^/]*$/)
 								,tag
@@ -521,7 +521,7 @@ JSONP.append("http://api.buzzurl.jp/api/posts/get/v1/json/?url="+encodeURICompon
 ));
 
 // livedoor Clip
-JSONP.append("http://clip.livedoor.com/api/json/comments?link="+encodeURIComponent(url)+"&callback="+JSONP.registerCallback(
+JSONP.append("http://api.clip.livedoor.com/json/comments?link="+encodeURIComponent(url)+"&callback="+JSONP.registerCallback(
 	"ldc"
 	,function(json){
 		if(json.StatusCode != "200") return ;
