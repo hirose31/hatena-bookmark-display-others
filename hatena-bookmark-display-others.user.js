@@ -288,7 +288,7 @@ elmNocomment.setAttribute("style",[
 var hasComment=function(li){
 	var sp=li.getElementsByTagName("span");
 	for(var i=0,len=sp.length; i<len; i++){
-		if(sp[i].className.indexOf("comment") > -1){
+		if(sp[i].className == "comment"){
 			return true;
 		}
 	}
