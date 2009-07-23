@@ -308,7 +308,14 @@ document.getElementById("bookmarked_user").parentNode.appendChild(elmNocomment);
 // get external comments
 // --------------------------------------------------
 
-var url=location.href.match(/^http:\/\/b.hatena.ne.jp\/entry\/(.*)$/)[1];
+var url;
+var matched;
+if (matched = location.href.match(/^http:\/\/b.hatena.ne.jp\/entry\/s\/(.*)$/)) {
+	url = "https://"+matched[1];
+} else if (matched = location.href.match(/^http:\/\/b.hatena.ne.jp\/entry\/(.*)$/)) {
+	url = "http://"+matched[1];
+}
+
 // var url_hash=MD5_hexhash(url);
 
 var strings={
